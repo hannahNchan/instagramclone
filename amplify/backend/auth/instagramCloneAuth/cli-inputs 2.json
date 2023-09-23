@@ -1,0 +1,66 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "instagramclone6ca4ac9d_identitypool_6ca4ac9d",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "instag6ca4ac9d",
+    "userPoolName": "instagramclone6ca4ac9d_userpool_6ca4ac9d",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email",
+      "gender",
+      "name",
+      "nickname"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": "30",
+    "userpoolClientWriteAttributes": [
+      "email",
+      "gender",
+      "name",
+      "nickname"
+    ],
+    "userpoolClientReadAttributes": [
+      "email",
+      "gender",
+      "name",
+      "nickname"
+    ],
+    "userpoolClientLambdaRole": "instag6ca4ac9d_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": true,
+    "sharedId": "6ca4ac9d",
+    "resourceName": "instagramCloneAuth",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "manual",
+    "thirdPartyAuth": false,
+    "usernameAttributes": [
+      "email"
+    ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {
+      "PreSignup": [
+        "custom"
+      ]
+    },
+    "hostedUI": false,
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}

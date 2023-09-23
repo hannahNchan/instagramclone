@@ -1,0 +1,24 @@
+{
+  "version":"1",
+  "region":"us-east-1",
+  "userPoolId":"us-east-1_9zPVkUqzU",
+  "userName":"0a97f2a5-0c2e-41a4-9c54-9c819bd26202",
+  "callerContext":{
+     "awsSdkVersion":"aws-sdk-unknown-unknown",
+     "clientId":"v7qu05jcu91fh7aiiko807rn"
+  },
+  "triggerSource":"PreSignUp_SignUp",
+  "request":{
+     "userAttributes":{
+        "name":"hannah noelia narvaez",
+        "nickname":"hannahchan",
+        "email":"hannah.n.narvaezj@gmail.com"
+     },
+     "validationData":null
+  },
+  "response":{
+     "autoConfirmUser":false,
+     "autoVerifyEmail":false,
+     "autoVerifyPhone":false
+  }
+}
