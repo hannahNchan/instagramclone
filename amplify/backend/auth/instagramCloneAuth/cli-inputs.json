@@ -38,7 +38,8 @@
       "email",
       "gender",
       "name",
-      "nickname"
+      "nickname",
+      "email_verified"
     ],
     "userpoolClientLambdaRole": "instag6ca4ac9d_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
