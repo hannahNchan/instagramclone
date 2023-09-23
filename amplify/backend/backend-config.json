@@ -103,6 +103,40 @@
       "type": "manual"
     }
   },
+  "parameters": {
+    "AMPLIFY_function_instagramCloneAuthPreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "instagramCloneAuthPreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_instagramCloneAuthPreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "instagramCloneAuthPreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_appId": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_type": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    }
+  },
   "storage": {
     "s3c3799950": {
       "dependsOn": [],
