@@ -24,6 +24,7 @@ const UploadPicture = ({ identityId, mainUser }) => {
   };
 
   async function onChange(e) {
+    console.log("chofas estuvo aqui")
     onSelectFile(e);
     const file = e.target.files[0];
     try {

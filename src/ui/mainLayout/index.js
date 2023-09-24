@@ -27,7 +27,7 @@ function MainLayout({ mainUser, handleGoToProfile, signOut, children }) {
 
   const menuItems = [
     { name: "All mail", action: null },
-    { name: "Account", action: handleGoToProfile },
+    { name: "My Feed", action: handleGoToProfile },
     { name: "Sign Out", action: signOut },
   ];
 

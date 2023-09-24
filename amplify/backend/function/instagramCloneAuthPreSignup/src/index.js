@@ -123,13 +123,14 @@ exports.handler = function (event, context, callback) { return __awaiter(void 0,
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                query = "\n  mutation CreateUser(\n    $input: CreateUserInput!\n    $condition: ModelUserConditionInput\n  ) {\n    createUser(input: $input, condition: $condition) {\n      userPoolSub\n      identityPoolId\n      name\n      userName\n      mail\n      createdAt\n      updatedAt\n      __typename\n    }\n  }\n";
+                query = "\n    mutation CreateUser(\n      $input: CreateUserInput!\n      $condition: ModelUserConditionInput\n    ) {\n      createUser(input: $input, condition: $condition) {\n        userPoolSub\n        identityPoolId\n        name\n        userName\n        mail\n        gender\n        createdAt\n        updatedAt\n        __typename\n      }\n    }\n  ";
                 console.log(event);
                 variables = {
                     input: {
                         mail: event.request.userAttributes.email,
                         name: event.request.userAttributes.name,
                         userName: event.request.userAttributes.nickname,
+                        gender: event.request.userAttributes.gender,
                         userPoolSub: event.userName
                     }
                 };

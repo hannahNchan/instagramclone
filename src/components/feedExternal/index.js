@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Amplify, Storage } from "aws-amplify";
+import { Amplify, Storage, API } from "aws-amplify";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useParams } from "react-router-dom";
+import * as queries from '../../graphql/queries';
 
 import PhotoGrid from "../../ui/photoGrid";
 
@@ -18,7 +19,12 @@ const FeedExternal = () => {
   async function handleWatchFeed() {
     const s3Bucket = Amplify.configure()["aws_user_files_s3_bucket"];
     let imagesTemp = [];
-    Storage.list("", { level: "protected", identityId: accountId })
+
+    const { data } = await API.graphql({
+      query: queries.usersByUserName,
+      variables: { userName: accountId, limit: 1 }
+    });
+    Storage.list("", { level: "protected", identityId: data.usersByUserName.items[0].identityPoolId })
       .then(({ results }) => {
         console.log(results);
         results.forEach(async (imageObject) => {

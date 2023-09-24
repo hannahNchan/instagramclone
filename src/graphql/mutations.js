@@ -12,6 +12,7 @@ export const createUser = /* GraphQL */ `
       name
       userName
       mail
+      gender
       createdAt
       updatedAt
       __typename
@@ -29,6 +30,7 @@ export const updateUser = /* GraphQL */ `
       name
       userName
       mail
+      gender
       createdAt
       updatedAt
       __typename
@@ -46,6 +48,7 @@ export const deleteUser = /* GraphQL */ `
       name
       userName
       mail
+      gender
       createdAt
       updatedAt
       __typename

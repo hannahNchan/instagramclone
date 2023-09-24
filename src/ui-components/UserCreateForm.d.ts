@@ -18,6 +18,7 @@ export declare type UserCreateFormInputValues = {
     name?: string;
     userName?: string;
     mail?: string;
+    gender?: string;
 };
 export declare type UserCreateFormValidationValues = {
     userPoolSub?: ValidationFunction<string>;
@@ -25,6 +26,7 @@ export declare type UserCreateFormValidationValues = {
     name?: ValidationFunction<string>;
     userName?: ValidationFunction<string>;
     mail?: ValidationFunction<string>;
+    gender?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserCreateFormOverridesProps = {
@@ -34,6 +36,7 @@ export declare type UserCreateFormOverridesProps = {
     name?: PrimitiveOverrideProps<TextFieldProps>;
     userName?: PrimitiveOverrideProps<TextFieldProps>;
     mail?: PrimitiveOverrideProps<TextFieldProps>;
+    gender?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UserCreateFormProps = React.PropsWithChildren<{
     overrides?: UserCreateFormOverridesProps | undefined | null;

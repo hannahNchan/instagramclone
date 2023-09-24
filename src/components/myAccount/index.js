@@ -3,8 +3,6 @@ import { Amplify, Storage } from "aws-amplify";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import PhotoGrid from "../../ui/photoGrid";
-
 const MyAccount = () => {
   const [images, setImages] = useState([]);
 

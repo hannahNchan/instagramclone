@@ -5,7 +5,6 @@ import MainLayout from '../../ui/mainLayout';
 
 const Layout = ({ children }) => {
   const { profile } = useSelector((state) => state);
-  console.log(profile)
 
   return (
     <div>

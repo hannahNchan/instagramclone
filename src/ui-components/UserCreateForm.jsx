@@ -28,6 +28,7 @@ export default function UserCreateForm(props) {
     name: "",
     userName: "",
     mail: "",
+    gender: "",
   };
   const [userPoolSub, setUserPoolSub] = React.useState(
     initialValues.userPoolSub
@@ -38,6 +39,7 @@ export default function UserCreateForm(props) {
   const [name, setName] = React.useState(initialValues.name);
   const [userName, setUserName] = React.useState(initialValues.userName);
   const [mail, setMail] = React.useState(initialValues.mail);
+  const [gender, setGender] = React.useState(initialValues.gender);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setUserPoolSub(initialValues.userPoolSub);
@@ -45,14 +47,16 @@ export default function UserCreateForm(props) {
     setName(initialValues.name);
     setUserName(initialValues.userName);
     setMail(initialValues.mail);
+    setGender(initialValues.gender);
     setErrors({});
   };
   const validations = {
     userPoolSub: [{ type: "Required" }],
     identityPoolId: [],
-    name: [],
-    userName: [],
-    mail: [{ type: "Email" }],
+    name: [{ type: "Required" }],
+    userName: [{ type: "Required" }],
+    mail: [{ type: "Required" }, { type: "Email" }],
+    gender: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -85,6 +89,7 @@ export default function UserCreateForm(props) {
           name,
           userName,
           mail,
+          gender,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -152,6 +157,7 @@ export default function UserCreateForm(props) {
               name,
               userName,
               mail,
+              gender,
             };
             const result = onChange(modelFields);
             value = result?.userPoolSub ?? value;
@@ -180,6 +186,7 @@ export default function UserCreateForm(props) {
               name,
               userName,
               mail,
+              gender,
             };
             const result = onChange(modelFields);
             value = result?.identityPoolId ?? value;
@@ -196,7 +203,7 @@ export default function UserCreateForm(props) {
       ></TextField>
       <TextField
         label="Name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {
@@ -208,6 +215,7 @@ export default function UserCreateForm(props) {
               name: value,
               userName,
               mail,
+              gender,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -224,7 +232,7 @@ export default function UserCreateForm(props) {
       ></TextField>
       <TextField
         label="User name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={userName}
         onChange={(e) => {
@@ -236,6 +244,7 @@ export default function UserCreateForm(props) {
               name,
               userName: value,
               mail,
+              gender,
             };
             const result = onChange(modelFields);
             value = result?.userName ?? value;
@@ -252,7 +261,7 @@ export default function UserCreateForm(props) {
       ></TextField>
       <TextField
         label="Mail"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={mail}
         onChange={(e) => {
@@ -264,6 +273,7 @@ export default function UserCreateForm(props) {
               name,
               userName,
               mail: value,
+              gender,
             };
             const result = onChange(modelFields);
             value = result?.mail ?? value;
@@ -277,6 +287,35 @@ export default function UserCreateForm(props) {
         errorMessage={errors.mail?.errorMessage}
         hasError={errors.mail?.hasError}
         {...getOverrideProps(overrides, "mail")}
+      ></TextField>
+      <TextField
+        label="Gender"
+        isRequired={true}
+        isReadOnly={false}
+        value={gender}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              userPoolSub,
+              identityPoolId,
+              name,
+              userName,
+              mail,
+              gender: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.gender ?? value;
+          }
+          if (errors.gender?.hasError) {
+            runValidationTasks("gender", value);
+          }
+          setGender(value);
+        }}
+        onBlur={() => runValidationTasks("gender", gender)}
+        errorMessage={errors.gender?.errorMessage}
+        hasError={errors.gender?.hasError}
+        {...getOverrideProps(overrides, "gender")}
       ></TextField>
       <Flex
         justifyContent="space-between"

@@ -21,7 +21,7 @@ async function graphql(
   query: string,
   variables = {},
   endpoint = new URL(GRAPHQL_ENDPOINT),
-  region: string = AWS_REGION
+  region: string = AWS_REGION,
 ) {
   const signer = new SignatureV4({
     credentials: defaultProvider(),
@@ -45,7 +45,7 @@ async function graphql(
   const request = new Request(GRAPHQL_ENDPOINT, signed);
 
   let statusCode = 200;
-  let body: any = {}
+  let body: any = {};
   try {
     const response = await fetch(request);
     body = await response.json();
@@ -60,7 +60,7 @@ async function graphql(
   }
   if (statusCode == 500 || statusCode == 400) {
     throw Error(
-      `status_code=${statusCode} & body_errors=${JSON.stringify(body.errors)}`
+      `status_code=${statusCode} & body_errors=${JSON.stringify(body.errors)}`,
     );
   }
 
@@ -75,35 +75,38 @@ async function graphql(
  */
 exports.handler = async (event, context, callback) => {
   const query = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      userPoolSub
-      identityPoolId
-      name
-      userName
-      mail
-      createdAt
-      updatedAt
-      __typename
+    mutation CreateUser(
+      $input: CreateUserInput!
+      $condition: ModelUserConditionInput
+    ) {
+      createUser(input: $input, condition: $condition) {
+        userPoolSub
+        identityPoolId
+        name
+        userName
+        mail
+        gender
+        createdAt
+        updatedAt
+        __typename
+      }
     }
-  }
-`;
+  `;
+
   console.log(event);
   const variables = {
     input: {
       mail: event.request.userAttributes.email,
       name: event.request.userAttributes.name,
       userName: event.request.userAttributes.nickname,
+      gender: event.request.userAttributes.gender,
       userPoolSub: event.userName,
     },
   };
 
   const response = await graphql(query, variables);
-  console.log(response)
-  
+  console.log(response);
+
   // Return to Amazon Cognito
   callback(null, event);
 };

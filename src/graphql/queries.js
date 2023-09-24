@@ -9,6 +9,7 @@ export const getUser = /* GraphQL */ `
       name
       userName
       mail
+      gender
       createdAt
       updatedAt
       __typename
@@ -36,6 +37,38 @@ export const listUsers = /* GraphQL */ `
         name
         userName
         mail
+        gender
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const usersByUserName = /* GraphQL */ `
+  query UsersByUserName(
+    $userName: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    usersByUserName(
+      userName: $userName
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        userPoolSub
+        identityPoolId
+        name
+        userName
+        mail
+        gender
         createdAt
         updatedAt
         __typename

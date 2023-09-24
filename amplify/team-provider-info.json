@@ -19,7 +19,7 @@
       "function": {
         "instagramCloneAuthPreSignup": {
           "deploymentBucketName": "amplify-instagramclone-develop-222503-deployment",
-          "s3Key": "amplify-builds/instagramCloneAuthPreSignup-62696d646c716c724946-build.zip"
+          "s3Key": "amplify-builds/instagramCloneAuthPreSignup-6c636f6379654b2b6b35-build.zip"
         }
       },
       "storage": {

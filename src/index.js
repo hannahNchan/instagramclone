@@ -13,6 +13,7 @@ import store from "./redux/store";
 import reportWebVitals from './reportWebVitals';
 import { Amplify, Storage } from 'aws-amplify';
 import awsExports from './aws-exports';
+import { AmplifyProvider } from '@aws-amplify/ui-react';
 Amplify.configure(awsExports);
 
 Storage.configure({
@@ -43,7 +44,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <AmplifyProvider>
+        <RouterProvider router={router} />
+      </AmplifyProvider>
     </Provider>
   </React.StrictMode>
 );
